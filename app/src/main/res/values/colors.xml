@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="Login">#fff</color>
+    <color name="find_image_thumns_is">#ca0a0a</color>
+    <color name="find_image_thumns_no">#ccc</color>
+</resources>

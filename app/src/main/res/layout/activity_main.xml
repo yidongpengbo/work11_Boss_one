@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@mipmap/login"
+    >
+
+        <EditText
+            android:id="@+id/Login_Number"
+            android:layout_width="@dimen/dp_280"
+            android:layout_height="wrap_content"
+            android:hint="手机号"
+            android:textColorHint="@color/Login"
+            android:textSize="@dimen/sp_18"
+            android:drawablePadding="@dimen/dp_20"
+            android:drawableLeft="@mipmap/login_icon_phone_n_hdpi"
+            android:layout_marginLeft="@dimen/dp_36"
+            android:layout_marginRight="@dimen/dp_36"
+            android:layout_marginTop="@dimen/dp_160"
+            android:background="@drawable/phone"
+              android:paddingBottom="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:inputType="number"
+            />
+
+        <EditText
+            android:id="@+id/Login_Password"
+            android:layout_width="@dimen/dp_256"
+            android:layout_height="wrap_content"
+            android:hint="登录密码"
+            android:textColorHint="@color/Login"
+            android:textSize="@dimen/sp_18"
+            android:drawablePadding="@dimen/dp_20"
+            android:drawableLeft="@mipmap/login_icon_lock_n_hdpi"
+            android:paddingRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_36"
+                android:background="@null"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_below="@id/Login_Number"
+            android:inputType="textPassword"
+            />
+        <ImageView
+            android:id="@+id/Login_Eye"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:background="@mipmap/login_icon_eye_n_hdhpi"
+            android:layout_toRightOf="@id/Login_Password"
+            android:layout_below="@id/Login_Number"
+            android:layout_marginRight="@dimen/dp_36"
+            />
+         <View
+             android:layout_width="@dimen/dp_280"
+             android:layout_height="@dimen/dp_2"
+             android:layout_below="@id/Login_Password"
+             android:background="@drawable/phone"
+             android:layout_marginTop="@dimen/dp_0"
+             android:layout_marginLeft="@dimen/dp_36"
+
+             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/Login_Password"
+            >
+
+                <CheckBox
+                    android:id="@+id/Remeber_Password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_36"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:buttonTint="@color/Login"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:text="记住密码"
+                    android:textColor="#fff" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                   >
+                        <TextView
+                            android:id="@+id/Rapid_registration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="快速注册"
+                            android:textSize="@dimen/sp_14"
+                            android:textColor="@color/Login"
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="@dimen/dp_36"
+                            android:padding="@dimen/dp_5"
+                            />
+                </LinearLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/Login"
+            android:layout_width="@dimen/dp_280"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_36"
+            android:layout_marginBottom="@dimen/dp_120"
+            android:background="@drawable/button_login"
+            android:text="登录"
+            android:layout_alignParentBottom="true"
+            android:textColor="#ff5f71"
+            android:textSize="@dimen/sp_18"
+            />
+
+</RelativeLayout>
