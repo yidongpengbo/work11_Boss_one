@@ -38,10 +38,17 @@ public class RecyclerLiftAdapter extends RecyclerView.Adapter<RecyclerLiftAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Glide.with(mContext).load(mjihe.get(i).getMasterPic()).into(viewHolder.LiftImage);
         viewHolder.LiftTitle.setText(mjihe.get(i).getCommodityName());
-        viewHolder.LiftPrice.setText(mjihe.get(i).getPrice()+"");
+        viewHolder.LiftPrice.setText("¥"+mjihe.get(i).getPrice()+"");
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //得到点击的下标
+                mCallBack.getData(i);
+            }
+        });
     }
 
     @Override
@@ -58,5 +65,14 @@ public class RecyclerLiftAdapter extends RecyclerView.Adapter<RecyclerLiftAdapte
             LiftTitle=itemView.findViewById(R.id.Lift_Title);
             LiftPrice=itemView.findViewById(R.id.Lift_Price);
         }
+    }
+
+    public interface CallBack{
+        void getData(int i);
+    }
+    public RecyclerHotAdapter.CallBack mCallBack;
+
+    public void setCallBack(RecyclerHotAdapter.CallBack callBack) {
+        mCallBack = callBack;
     }
 }

@@ -38,10 +38,17 @@ public class RecyclerHotAdapter extends RecyclerView.Adapter<RecyclerHotAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Glide.with(mContext).load(mjihe.get(i).getMasterPic()).into(viewHolder.Hot_Image);
         viewHolder.Hot_Title.setText(mjihe.get(i).getCommodityName());
         viewHolder.Hot_Price.setText("¥"+mjihe.get(i).getPrice()+"0");
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //得到点击的下标
+                mCallBack.getData(i);
+            }
+        });
     }
 
     @Override
@@ -59,5 +66,14 @@ public class RecyclerHotAdapter extends RecyclerView.Adapter<RecyclerHotAdapter.
             Hot_Price=itemView.findViewById(R.id.Hot_Price);
 
         }
+    }
+
+    public interface CallBack{
+        void getData(int i);
+    }
+    public CallBack mCallBack;
+
+    public void setCallBack(CallBack callBack) {
+        mCallBack = callBack;
     }
 }

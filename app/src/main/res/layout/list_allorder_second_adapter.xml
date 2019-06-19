@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_312"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:background="@drawable/list_allorder_second_adapter"
+    >
+    <TextView
+        android:id="@+id/Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="订单号"
+        android:textSize="@dimen/sp_12"
+        android:textColor="#666666"
+        />
+    <TextView
+        android:id="@+id/secondCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_10"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_toRightOf="@id/Code"
+        />
+    <TextView
+        android:id="@+id/secondTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_10"
+        android:textColor="#666666"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_10"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/secondRecycler"
+        android:layout_width="@dimen/dp_292"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/Code"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        />
+
+</RelativeLayout>

@@ -13,17 +13,26 @@
         android:supportsRtl="true"
         android:name=".Until.BaseApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".RegistrationActivity"/>
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".FindActivity"/>
+        <activity android:name=".ReceivingActivity"/>
+        <activity android:name=".FindAddressActivity"/>
+        <activity android:name=".Add_Adress_Activity"/>
+        <activity android:name=".WalletActivity"/>
+        <activity android:name=".FoodActivity"/>
+        <activity android:name=".FindReleaseActivity"/>
+        <activity android:name=".ToPayActivity"/>
+        <activity android:name=".ReceiveOkActivity"/>
+        <activity android:name=".GoCommentActivity"/>
     </application>
 
 </manifest>

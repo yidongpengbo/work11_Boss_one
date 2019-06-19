@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_292"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_20"
+   android:layout_gravity="center_horizontal"
+    android:background="@drawable/remeber_password"
+
+    >
+    <TextView
+        android:id="@+id/ding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="订单号"
+        android:layout_margin="@dimen/dp_10"
+        />
+    <TextView
+        android:id="@+id/orderCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ding"
+        android:layout_marginTop="@dimen/dp_12"
+        android:textSize="@dimen/sp_10"
+        android:text="12354554"
+        />
+    <TextView
+        android:id="@+id/payTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_10"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_10"
+        android:text="315113"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/payRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orderCode"
+        android:layout_margin="@dimen/dp_10"
+        ></android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/Cancellation"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_30"
+        android:text="取消订单"
+        android:textColor="#666666"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="#fcf"
+        android:layout_below="@id/payRecycler"
+        />
+    <Button
+        android:id="@+id/toPay"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30"
+        android:text="去支付"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/payRecycler"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="#f00"
+        />
+
+
+</RelativeLayout>

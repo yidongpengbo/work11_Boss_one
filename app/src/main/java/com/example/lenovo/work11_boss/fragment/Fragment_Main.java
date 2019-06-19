@@ -10,11 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.work11_boss.FindActivity;
+import com.example.lenovo.work11_boss.FindAddressActivity;
+import com.example.lenovo.work11_boss.FoodActivity;
 import com.example.lenovo.work11_boss.ProfileActivity;
 import com.example.lenovo.work11_boss.R;
 import com.example.lenovo.work11_boss.Until.APis;
+import com.example.lenovo.work11_boss.WalletActivity;
 import com.example.lenovo.work11_boss.bean.Main_Profile_Bean;
 import com.example.lenovo.work11_boss.iprisenter.IPrenserterImp;
 import com.example.lenovo.work11_boss.iview.IView;
@@ -104,6 +108,34 @@ public class Fragment_Main extends Fragment implements IView {
     }
 
     /**
+     * TODO:我的钱包
+     */
+    @OnClick(R.id.Main_Wallet_Text)
+    public void initWallet(){
+        Intent intent = new Intent(getActivity(), WalletActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * TODO:我的地址
+     */
+    @OnClick(R.id.Main_Address_Text)
+    public void initAddress(){
+            //跳转到Activity
+        Intent intent = new Intent(getActivity(), FindAddressActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * TODO:我的足迹
+     */
+    @OnClick(R.id.Main_Foot_Text)
+    public void initFoot() {
+        Intent intent = new Intent(getActivity(), FoodActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * 获得数据
      * @param o
      */
@@ -136,6 +168,6 @@ public class Fragment_Main extends Fragment implements IView {
      */
     @Override
     public void setError(String error) {
-
+        Toast.makeText(getActivity(), "error="+error, Toast.LENGTH_SHORT).show();
     }
 }

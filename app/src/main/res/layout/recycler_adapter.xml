@@ -8,7 +8,7 @@
     android:shadowDx="1"
     android:shadowDy="1"
     android:shadowRadius="0.5"
-    android:background="@drawable/home_shop"
+    android:background="@drawable/home_list"
     >
 
     <ImageView

@@ -6,21 +6,36 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.lenovo.work11_boss.Until.APis;
+import com.example.lenovo.work11_boss.bean.ImageFileBean;
+import com.example.lenovo.work11_boss.iprisenter.IPrenserterImp;
+import com.example.lenovo.work11_boss.iview.IView;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-public class ProfileActivity extends AppCompatActivity {
+/**
+ * @author lenovo
+ *  个人资料
+ */
+public class ProfileActivity extends AppCompatActivity implements IView {
     @BindView(R.id.Profile_head_Image)
     public SimpleDraweeView mProfileHeadImage;
     @BindView(R.id.Profile_Name)
@@ -30,11 +45,16 @@ public class ProfileActivity extends AppCompatActivity {
     private PopupWindow mPopupWindow;
     private TextView mModify;
     private TextView mPhotograph;
+    private String filepath = Environment.getExternalStorageDirectory()
+            + "/file.png";
 
+    IPrenserterImp mIPrenserterImp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        initimmersive();
+        mIPrenserterImp=new IPrenserterImp(this);
         ButterKnife.bind(this);
        //赋值
         initVelue();
@@ -81,6 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.RED));
         //设置是否可以触摸
         mPopupWindow.setTouchable(true);
+
     }
 
     /**
@@ -88,6 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     @OnClick(R.id.Profile_head_Image)
     public void headImage(){
+		
        mPopupWindow.showAsDropDown(mProfileHeadImage);
 
     }
@@ -140,12 +162,85 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(requestCode == 200 && resultCode == RESULT_OK){
             Bitmap bitmap = data.getParcelableExtra("data");
-            mProfileHeadImage.setImageBitmap(bitmap);
-            //TODO:将图片保存到......
+            ImageFileUntil.setBitmap(bitmap,filepath,50);
+            //TODO:网络请求
+            HashMap<String, String> map = new HashMap<>();
+            map.put("image",filepath);
+            Log.i("TAG","file:");
+            mIPrenserterImp.startImage(APis.IMAGE_FILE,map,ImageFileBean.class);
 
         }
+//     /storage/emulated/0/temp.jpg
 
 
     }
+
+
+
+    /**
+     * 获取到数据
+     * @param o
+     */
+    @Override
+    public void setData(Object o) {
+        if (o instanceof ImageFileBean){
+            ImageFileBean imageFileBean=(ImageFileBean)o;
+            if (imageFileBean.getMessage().equals("上传成功")){
+                Toast.makeText(this, ""+imageFileBean.getMessage(), Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "........", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void setError(String error) {
+        Toast.makeText(this, "出错啦"+error, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 解绑
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mIPrenserterImp.onDelet();
+    }
+    /**
+     * TODO：1.沉浸式
+     */
+    private void initimmersive() {
+        View decorView = getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(option);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+    }
+}
+
+    class ImageFileUntil{
+        public static void setBitmap(Bitmap bitmap,String path,int quality){
+            String substring = path.substring(0, path.lastIndexOf("/"));
+            File file = new File(substring);
+            if (!file.exists()||!file.isDirectory()){
+                try{
+                    if (!file.mkdirs()){
+                        return;
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            FileOutputStream outputStream;
+            try {
+                outputStream = new FileOutputStream(path);
+                if (bitmap.compress(Bitmap.CompressFormat.PNG,quality,outputStream)){
+                    outputStream.flush();
+                    outputStream.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
 }

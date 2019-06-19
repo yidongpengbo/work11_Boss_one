@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lenovo.work11_boss.R;
@@ -33,7 +32,7 @@ public class Home_Menu_Two_Adapter extends RecyclerView.Adapter<Home_Menu_Two_Ad
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view=LayoutInflater.from(mContext).inflate(R.layout.home_menu_two_adapter,viewGroup,false);
+        View view=LayoutInflater.from(mContext).inflate(R.layout.home_menu_second_adapter,viewGroup,false);
         return new ViewHolder(view);
 
     }
@@ -70,11 +69,11 @@ public class Home_Menu_Two_Adapter extends RecyclerView.Adapter<Home_Menu_Two_Ad
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-                ImageView Two_Image;
+
                 TextView Two_Title;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            Two_Image=itemView.findViewById(R.id.Two_Image);
+
             Two_Title=itemView.findViewById(R.id.Two_Title);
         }
     }

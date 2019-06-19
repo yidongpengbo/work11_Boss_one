@@ -6,6 +6,8 @@ import java.util.Map;
 
 public interface IModel {
     void requestData(Map<String,String>map, String path, Class clazz, MyCallBack myCallBack);
-        //TODO:qqqqqqqqqqq
     void requestGet(String path,Class clazz,MyCallBack myCallBack);
+    void requestPut(Map<String,String>map, String path, Class clazz, MyCallBack myCallBack);
+    void requestImage(String path,Map<String,String>map,Class clazz,MyCallBack myCallBack);
+
 }

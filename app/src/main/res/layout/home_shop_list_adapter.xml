@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dp_151"
     android:layout_height="@dimen/dp_174"
-   android:background="@drawable/home_shop"
+   android:background="@drawable/home_list"
     android:shadowColor="@color/Login"
     android:shadowDx="4"
     android:shadowDy="4"

@@ -1,15 +1,20 @@
 package com.example.lenovo.work11_boss.Until;
+
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -26,8 +31,8 @@ public class OKHttpUntil<T> {
      * 外网访问，域名为：http://mobile.bwstudent.com/
      * 网址域名。
      */
-    private final String BASE_PATH = "http://172.17.8.100/small/";
-
+   // private final String BASE_PATH = "http://172.17.8.100/small/";
+    private final String BASE_PATH = "http://mobile.bwstudent.com/small/";
     /**
      * 1.单例
      */
@@ -160,6 +165,65 @@ public class OKHttpUntil<T> {
 
     }
 
+    /**
+     * 9.put表单请求：
+     *      1.先将Map<String,String>类型切换成Map<String,RequestBody>
+     */
+    public Map<String, RequestBody> generateRequestBody(Map<String,String> requestDataMap){
+        Map<String,RequestBody> requestBodyMap = new HashMap<>();
+        for (String key : requestDataMap.keySet()){
+            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/from-data"),
+                    requestDataMap.get(key) == null ? "" :requestDataMap.get(key));
+            requestBodyMap.put(key,requestBody);
+        }
+        return requestBodyMap;
+    }
 
-}
+    /**
+     * put请求
+     * @param path
+     * @param map
+     * @param callBack
+     * @return
+     */
+    public OKHttpUntil put(String path,Map<String,RequestBody>map,CallBack callBack) {
+        if (map==null){
+            map=new HashMap<>();
+        }
+        mBaseApis.put(path, map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getObserver(callBack));
+        return instance;
+    }
+    /**
+     * 10.图片传入
+     *  创建MultipartBody.Builder，类型为Form
+     */
+    public static MultipartBody filesMultipar(Map<String,String> map) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            File file = new File(entry.getValue());
+            builder.addFormDataPart(entry.getKey(), "tp.png",
+                    RequestBody.create(MediaType.parse("multipart/form-data"), file));
+        }
+        builder.setType(MultipartBody.FORM);
+        MultipartBody multipartBody = builder.build();
+        return multipartBody;
+    }
+
+    public OKHttpUntil upImage(String path,Map<String,String>map,CallBack callBack){
+        if (map==null){
+            map=new HashMap<>();
+        }
+        MultipartBody multipartBody = filesMultipar(map);
+        mBaseApis.upImage(path,multipartBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getObserver(callBack));
+            return instance;
+    }
+
+
+    }
 

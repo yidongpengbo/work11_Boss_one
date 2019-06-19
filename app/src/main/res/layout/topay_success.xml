@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/topay_success"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#81111111"
+    >
+    <ImageView
+        android:id="@+id/success_image"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_152"
+        android:background="@mipmap/success"
+        />
+    <TextView
+        android:id="@+id/success_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付成功"
+        android:textSize="@dimen/sp_20"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:textColor="#ffffff"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_below="@id/success_image"
+        />
+    <Button
+        android:id="@+id/success_Return"
+        android:layout_width="@dimen/dp_108"
+        android:layout_height="@dimen/dp_40"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sp_14"
+        android:text="返回主页"
+        android:layout_below="@id/success_text"
+        android:background="@drawable/topay_success_return"
+        android:layout_marginTop="@dimen/dp_60"
+        />
+    <Button
+        android:id="@+id/success_See"
+        android:layout_width="@dimen/dp_108"
+        android:layout_height="@dimen/dp_40"
+        android:text="查看订单"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ff5f71"
+        android:background="@drawable/topay_success_see"
+        android:layout_below="@id/success_Return"
+        android:layout_marginTop="@dimen/dp_20"
+        />
+</RelativeLayout>

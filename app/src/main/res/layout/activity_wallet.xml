@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/Relat"
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_156"
+        android:layout_marginTop="@dimen/dp_41"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/group"
+        >
+        <TextView
+            android:id="@+id/yue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_28"
+            android:textSize="@dimen/sp_18"
+            android:text="余额"
+            android:textColor="#343434"
+            />
+        <TextView
+            android:id="@+id/walletBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#343434"
+            android:textSize="64sp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/yue"
+            android:text="100.00"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:layout_below="@id/Relat"
+
+        >
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_38"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:textColor="#666666"
+                android:text="消费金额"
+                android:layout_marginLeft="@dimen/dp_65"
+                />
+            <View
+                android:layout_width="@dimen/dp_2"
+                android:layout_height="@dimen/dp_20"
+                android:background="#81111111"
+                android:layout_marginLeft="@dimen/dp_65"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:textColor="#666666"
+                android:text="消费时间"
+                android:layout_marginLeft="@dimen/dp_65"
+                />
+        </LinearLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_2"
+            android:background="#81111111"
+            android:layout_below="@id/linear"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/walletRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/view"
+            ></android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

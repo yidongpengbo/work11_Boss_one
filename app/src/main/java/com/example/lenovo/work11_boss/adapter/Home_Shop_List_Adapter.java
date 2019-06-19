@@ -43,11 +43,19 @@ public class Home_Shop_List_Adapter extends XRecyclerView.Adapter<Home_Shop_List
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Glide.with(mContext).load(mjihe.get(i).getMasterPic()).into(viewHolder.Shop_Image);
         viewHolder.Shop_Title.setText(mjihe.get(i).getCommodityName());
         viewHolder.Shop_Price.setText("¥"+mjihe.get(i).getPrice());
         viewHolder.Shop_Sell.setText("已售"+mjihe.get(i).getSaleNum()+"件");
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //得到点击的下标
+                mCallBack.getData(i);
+            }
+        });
+
     }
 
     @Override
@@ -65,5 +73,15 @@ public class Home_Shop_List_Adapter extends XRecyclerView.Adapter<Home_Shop_List
             Shop_Price=itemView.findViewById(R.id.Shop_Price);
             Shop_Sell=itemView.findViewById(R.id.Shop_Sell);
         }
+    }
+
+
+    public interface CallBack{
+        void getData(int i);
+    }
+    public RecyclerHotAdapter.CallBack mCallBack;
+
+    public void setCallBack(RecyclerHotAdapter.CallBack callBack) {
+        mCallBack = callBack;
     }
 }

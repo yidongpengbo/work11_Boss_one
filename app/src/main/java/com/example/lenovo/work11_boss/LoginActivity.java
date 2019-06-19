@@ -1,5 +1,6 @@
 package com.example.lenovo.work11_boss;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,33 +18,47 @@ import com.example.lenovo.work11_boss.fragment.Fragment_List;
 import com.example.lenovo.work11_boss.fragment.Fragment_Main;
 import com.example.lenovo.work11_boss.fragment.Fragment_Shop_Car;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+//import com.example.lenovo.work11_boss.fragment.Fragment_Shop_Car;
 
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.Login_View)
-    public ViewPager mViewPager;
+    ViewPager mViewPager;
     private RadioButton mRadioHome;
     private RadioButton mRadioFind;
-    private RadioButton mRadioShopCar;
+    @BindView(R.id.Radio_Shop_Car)
+     RadioButton mRadioShopCar;
     private RadioButton mRadioList;
     private RadioButton mRadioMain;
     @BindView(R.id.Radio_Group)
     public RadioGroup mRadioGroup;
     private List<Fragment> mjihe;
+    Unbinder unbinder;
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         initViewPager();
         initRadio();
         //沉浸式
         initimmersive();
-    }
+//        if (!EventBus.getDefault().isRegistered(this)){
+//            EventBus.getDefault().register(this);
+//        }
+        }
+
+
 
     /**
      * TODO:添加fragment、适配器
@@ -108,5 +123,23 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.hide();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    //（注意要接受的值的类型）
+//    public void onTouch(List<Float> event){
+//            mViewPager.setCurrentItem(0);
+//    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //当停止时，取消订阅
+        EventBus.getDefault().unregister(this);
+    }
 }

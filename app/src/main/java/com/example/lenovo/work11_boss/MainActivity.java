@@ -137,13 +137,14 @@ public class MainActivity extends AppCompatActivity implements IView {
         //得到输入框的值
         String input_Number = mLoginNumber.getText().toString();
         String input_Password = mLoginPassword.getText().toString();
-        if (!input_Number.matches("[1][3458]\\d{9}")){
+        String REGEX="[1][3458]\\d{9}";
+        if (!input_Number.matches(REGEX)){
             Toast.makeText(this,"手机格式不对",Toast.LENGTH_LONG).show();
         }
         if (input_Password.length()<=0){
             Toast.makeText(this,"密码不能为空",Toast.LENGTH_LONG).show();
         }
-        if (input_Number.matches("[1][3458]\\d{9}")&&input_Password.length()>0){
+        if (input_Number.matches(REGEX)&&input_Password.length()>0){
             //进行网络请求
             map.put("phone",input_Number);
             map.put("pwd",input_Password);

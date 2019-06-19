@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_97"
+    android:layout_marginBottom="@dimen/dp_10">
+    <ImageView
+        android:id="@+id/lastImage"
+        android:layout_width="@dimen/dp_81"
+        android:layout_height="@dimen/dp_81"
+        android:layout_margin="@dimen/dp_10"
+        />
+    <TextView
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lastImage"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textSize="@dimen/sp_12"
+        android:textColor="#666666"
+        android:lines="2"
+        android:ellipsize="end"
+        />
+    <TextView
+        android:id="@+id/lastPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ff0606"
+        android:layout_toRightOf="@id/lastImage"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_20"
+        />
+
+    <com.example.lenovo.work11_boss.Until.Shop_Car_Add_Reduce_View
+        android:id="@+id/lastAddReduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        />
+</RelativeLayout>

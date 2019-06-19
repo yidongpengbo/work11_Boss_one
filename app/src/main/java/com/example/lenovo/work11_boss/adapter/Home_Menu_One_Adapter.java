@@ -32,7 +32,7 @@ public class Home_Menu_One_Adapter extends RecyclerView.Adapter<Home_Menu_One_Ad
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            View view=LayoutInflater.from(mContext).inflate(R.layout.home_menu_one_adapter,viewGroup,false);
+            View view=LayoutInflater.from(mContext).inflate(R.layout.home_menu_first_adapter,viewGroup,false);
         return new ViewHolder(view);
     }
 

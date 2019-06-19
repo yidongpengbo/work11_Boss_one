@@ -47,7 +47,7 @@
             />
         <ImageView
             android:id="@+id/Login_Eye"
-            android:layout_width="@dimen/dp_24"
+            android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_24"
             android:background="@mipmap/login_icon_eye_n_hdhpi"
             android:layout_toRightOf="@id/Login_Password"

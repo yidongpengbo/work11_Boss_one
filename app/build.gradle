@@ -57,6 +57,11 @@ dependencies {
     implementation 'com.github.xiaohaibin:XBanner:1.6.1'
     // fresco一般依赖：
     implementation 'com.facebook.fresco:fresco:0.14.1'
-
+    //banner
+    implementation 'com.youth.banner:banner:1.4.9'
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    //第三方地区三级联动
+    implementation 'liji.library.dev:citypickerview:1.1.0'
 
 }

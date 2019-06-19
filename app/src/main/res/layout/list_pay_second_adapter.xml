@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_300"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:background="@drawable/remeber_password"
+    >
+    <ImageView
+        android:id="@+id/Pay_Image"
+        android:layout_width="@dimen/dp_81"
+        android:layout_height="@dimen/dp_81"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        />
+    <TextView
+        android:id="@+id/Pay_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_12"
+        android:layout_toRightOf="@id/Pay_Image"
+
+        />
+    <TextView
+        android:id="@+id/Pay_Price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ff0606"
+        android:layout_toRightOf="@id/Pay_Image"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_65"
+        android:layout_marginBottom="@dimen/dp_8"
+        />
+   <com.example.lenovo.work11_boss.Until.Shop_Car_Add_Reduce_View
+       android:id="@+id/AddReduce"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+       android:layout_marginRight="@dimen/dp_20"
+       android:layout_marginTop="@dimen/dp_65"
+       ></com.example.lenovo.work11_boss.Until.Shop_Car_Add_Reduce_View>
+
+</RelativeLayout>

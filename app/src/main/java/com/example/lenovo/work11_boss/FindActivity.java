@@ -1,11 +1,16 @@
 package com.example.lenovo.work11_boss;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.work11_boss.Until.APis;
 import com.example.lenovo.work11_boss.adapter.Find_XRecycler_Adapter;
@@ -18,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FindActivity extends AppCompatActivity implements IView {
     /**
@@ -30,11 +36,13 @@ public class FindActivity extends AppCompatActivity implements IView {
     private Find_XRecycler_Adapter mFindXRecyclerAdapter;
     IPrenserterImp mIPrenserterImp;
     private List<Find_XRecycler_Bean.ResultBean> mFindXRecyclerBeanResult;
-
+    @BindView(R.id.Find_Release)
+    TextView Find_Release;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find);
+        initimmersive();
         ButterKnife.bind(this);
         mIPrenserterImp=new IPrenserterImp(this);
         //数据
@@ -80,23 +88,59 @@ public class FindActivity extends AppCompatActivity implements IView {
      */
     @Override
     public void setData(Object o) {
-        if (o instanceof Find_XRecycler_Bean){
-            Find_XRecycler_Bean findXRecyclerBean=(Find_XRecycler_Bean)o;
-            //将获取的值放到适配器
-            if (mPage==1){
-                mFindXRecyclerAdapter.setMjihe(findXRecyclerBean.getResult());
-            }else {
-                mFindXRecyclerAdapter.addMjihe(findXRecyclerBean.getResult());
-            }
-            mPage++;
-            mFindXRecycler.refreshComplete();
-            mFindXRecycler.loadMoreComplete();
+        if (o instanceof Find_XRecycler_Bean) {
+            Find_XRecycler_Bean findXRecyclerBean = (Find_XRecycler_Bean) o;
+            if (findXRecyclerBean.getResult()!=null) {
+                //将获取的值放到适配器
+                if (mPage == 1) {
+                    mFindXRecyclerAdapter.setMjihe(findXRecyclerBean.getResult());
+                } else {
+                    mFindXRecyclerAdapter.addMjihe(findXRecyclerBean.getResult());
+                }
+                mPage++;
+                mFindXRecycler.refreshComplete();
+                mFindXRecycler.loadMoreComplete();
 
+            }else {
+                //提示发布圈子
+                Find_Release.setVisibility(View.VISIBLE);
+                mFindXRecycler.setVisibility(View.INVISIBLE);
+            }
         }
+    }
+
+    /**
+     * TODO:发布圈子
+     */
+    @OnClick(R.id.Find_Release)
+    public void findRelease(){
+        Intent intent = new Intent(this,FindReleaseActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void setError(String error) {
+        Toast.makeText(this, "哇哦，出错啦"+error, Toast.LENGTH_SHORT).show();
+    }
 
+    /**
+     * TODO：1.沉浸式
+     */
+    private void initimmersive() {
+        View decorView = getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(option);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+    }
+
+
+    /**
+     * 解绑
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mIPrenserterImp.onDelet();
     }
 }

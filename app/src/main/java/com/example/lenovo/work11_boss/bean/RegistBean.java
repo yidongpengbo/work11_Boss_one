@@ -2,7 +2,7 @@ package com.example.lenovo.work11_boss.bean;
 
 public class RegistBean {
     public String message;
-    public int status;
+    public String status;
 
     public String getMessage() {
         return message;
@@ -12,11 +12,11 @@ public class RegistBean {
         this.message = message;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

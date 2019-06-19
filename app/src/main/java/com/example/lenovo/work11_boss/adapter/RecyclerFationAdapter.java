@@ -38,11 +38,17 @@ public class RecyclerFationAdapter extends RecyclerView.Adapter<RecyclerFationAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Glide.with(mContext).load(mjihe.get(i).getMasterPic()).into(viewHolder.Fation_Image);
         viewHolder.Fation_Title.setText(mjihe.get(i).getCommodityName());
         viewHolder.Fation_Price.setText("¥"+mjihe.get(i).getPrice()+"0");
-
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //得到点击的下标
+                mCallBack.getData(i);
+            }
+        });
     }
 
     @Override
@@ -60,5 +66,14 @@ public class RecyclerFationAdapter extends RecyclerView.Adapter<RecyclerFationAd
             Fation_Price=itemView.findViewById(R.id.Fation_Price);
 
         }
+    }
+
+    public interface CallBack{
+        void getData(int i);
+    }
+    public RecyclerHotAdapter.CallBack mCallBack;
+
+    public void setCallBack(RecyclerHotAdapter.CallBack callBack) {
+        mCallBack = callBack;
     }
 }

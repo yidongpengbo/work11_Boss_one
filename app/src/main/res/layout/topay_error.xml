@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/topay_error"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#81111111"
+    >
+
+    <ImageView
+        android:id="@+id/error_image"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_152"
+        android:background="@mipmap/fail"
+        />
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付失败"
+        android:textSize="@dimen/sp_20"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:textColor="#ffffff"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_below="@id/error_image"
+        />
+    <TextView
+        android:id="@+id/error_zan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂未开通微信与支付宝支付"
+        android:textSize="@dimen/sp_12"
+        android:textColor="#ffffff"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_below="@id/error_text"
+        android:layout_marginLeft="-25dp"
+        />
+    <TextView
+        android:id="@+id/error_qing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sp_12"
+        android:text="请选择余额支付"
+        android:layout_marginTop="@dimen/dp_2"
+        android:layout_below="@id/error_zan"
+        />
+    <Button
+        android:id="@+id/error_payment"
+        android:layout_width="@dimen/dp_108"
+        android:layout_height="@dimen/dp_40"
+        android:text="继续支付"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ffffff"
+        android:background="@drawable/topay_success_return"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_below="@id/error_qing"
+
+
+        />
+
+</RelativeLayout>

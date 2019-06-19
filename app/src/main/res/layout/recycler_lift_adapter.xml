@@ -9,7 +9,7 @@
     android:shadowDx="1"
     android:shadowDy="1"
     android:shadowRadius="0.5"
-    android:background="@drawable/home_shop">
+    android:background="@drawable/home_list">
     <ImageView
         android:id="@+id/Lift_Image"
         android:layout_width="@dimen/dp_131"
@@ -25,6 +25,8 @@
         android:textSize="@dimen/sp_12"
         android:layout_marginTop="@dimen/dp_12"
         android:textColor="#666666"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:layout_centerHorizontal="true"
         />
     <TextView
@@ -34,5 +36,6 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/Lift_Title"
         android:layout_marginTop="@dimen/dp_10"
+        android:textColor="#f00"
         />
 </RelativeLayout>
